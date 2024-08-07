@@ -2,7 +2,7 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
-#include "Span.hpp" // Include your Span class header
+#include "Span.hpp"
 
 void testSpanWithFiveNumbers()
 {
@@ -45,7 +45,7 @@ void testSpanWithHundredNumbers()
 	std::vector<int> numbers;
 	numbers.reserve(100);
 	for (int i = 0; i < 100; ++i) {
-		numbers.push_back(std::rand() % 1000); // Adding random numbers between 0 and 999
+		numbers.push_back(std::rand() % 1000);
 	}
 	sp.addNumbers(numbers.begin(), numbers.end());
 
@@ -61,7 +61,7 @@ void testSpanWithTenThousandNumbers()
 	std::vector<int> numbers;
 	numbers.reserve(100000);
 	for (int i = 0; i < 100000; ++i) {
-		numbers.push_back(std::rand() % 1000000); // Adding random numbers between 0 and 99,999
+		numbers.push_back(std::rand() % 1000000);
 	}
 	sp.addNumbers(numbers.begin(), numbers.end());
 
@@ -71,7 +71,7 @@ void testSpanWithTenThousandNumbers()
 
 int main()
 {
-	std::srand(std::time(0)); // Seed random number generator
+	std::srand(std::time(0));
 
 	try {
 		testSpanWithFiveNumbers();
