@@ -1,7 +1,9 @@
 #pragma once
 
-#include <algorithm>
 #include <vector>
+#include <algorithm>
+#include <stdexcept>
+#include <limits>
 
 class Span
 {

@@ -11,11 +11,12 @@ unsigned int Span::shortestSpan()
 {
 	if (_numbers.size() < 2)
 		throw std::runtime_error("Not enough numbers to find a span");
-
-	unsigned int minSpan = 4294967295;
-	for (size_t i = 1; i < _numbers.size(); ++i)
+	unsigned int minSpan = std::numeric_limits<unsigned int>::max();
+	std::vector<int> sorted = _numbers;
+	std::sort(sorted.begin(), sorted.end());
+	for (size_t i = 1; i < sorted.size(); ++i)
 	{
-		unsigned int span = std::abs(_numbers[i] - _numbers[i - 1]);
+		unsigned int span = std::abs(sorted[i] - sorted[i - 1]);
 		if (span < minSpan)
 			minSpan = span;
 	}
@@ -26,15 +27,9 @@ unsigned int Span::longestSpan()
 {
 	if (_numbers.size() < 2)
 		throw std::runtime_error("Not enough numbers to find a span");
-
-	unsigned int maxSpan = 0;
-	for (size_t i = 1; i < _numbers.size(); ++i)
-	{
-		unsigned int span = std::abs(_numbers[i] - _numbers[i - 1]);
-		if (span > maxSpan)
-			maxSpan = span;
-	}
-	return maxSpan;
+	std::vector<int>::iterator min = std::min_element(_numbers.begin(), _numbers.end());
+	std::vector<int>::iterator max = std::max_element(_numbers.begin(), _numbers.end());
+	return *max - *min;
 }
 
 Span::Span(unsigned int n) : _maxSize(n)
